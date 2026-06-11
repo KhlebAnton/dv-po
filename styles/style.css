@@ -356,7 +356,7 @@ line-height: 22px;
 
 .header-container {
     width: 100%;
-    max-width: 1113px;
+    /* max-width: 1113px; */
     margin: 0 auto;
     padding: 8px;
     border-radius: 16px;
@@ -2391,7 +2391,9 @@ line-height: 22px;
     max-width: 360px;
     width: 100%;
 }
-
+.footer .container-l {
+    max-width: none;
+}
 .footer-wrapper {
     padding: 34px 24px 43px;
     margin-bottom: 16px;
