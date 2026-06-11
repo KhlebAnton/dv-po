@@ -854,7 +854,7 @@ line-height: 22px;
     background-color: var(--light-blue-main);
 }
 
-section.section_run-stroke {
+.main section.section_run-stroke {
     overflow: hidden;
     padding: 32px 0 23px;
     margin: 0;
@@ -2581,8 +2581,7 @@ section.section_run-stroke {
         margin: 80px 0;
     }
 
-    section.section_run-stroke {
-        overflow: hidden;
+    .main section.section_run-stroke {
         padding: 21px 0 0;
         margin: 0;
 
