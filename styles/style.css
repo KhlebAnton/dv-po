@@ -2800,7 +2800,9 @@ line-height: 22px;
     .advantages__item {
         min-height: auto;
     }
-
+.run-stroke__wrapper {
+    gap: 50px;
+}
     .subscription-content {
         flex-direction: column;
         gap: 24px;
