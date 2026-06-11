@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         breakpoints: {
             1000: {
-                slidesPerView: 2,
+                slidesPerView: 'auto',
                 spaceBetween: 0,
             }
         }

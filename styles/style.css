@@ -71,7 +71,9 @@ html {
     color: var(--black);
     min-width: 360px;
 }
-
+.swiper-button-lock {
+    display: none !important;
+}
 section:not(:first-child) {
     margin: 100px 0;
 }
