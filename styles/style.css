@@ -869,6 +869,9 @@ section.section_run-stroke {
     gap: 77px;
     width: max-content;
     animation: scrollLeft 60s linear infinite;
+    will-change: transform;
+    -webkit-transform: translateZ(0); /* Аппаратное ускорение */
+    transform: translateZ(0);
 }
 
 .section_title {
@@ -889,20 +892,23 @@ section.section_run-stroke {
 
 @keyframes scrollLeft {
     0% {
-        transform: translateX(0%);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
     }
-
     100% {
+        -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
     }
 }
 
 .run-stroke__wrapper img {
+   width: auto;
     height: auto;
     max-width: 200px;
     flex-shrink: 0;
     display: block;
     transition: transform .8s ease;
+     pointer-events: auto; 
 
 }
 
