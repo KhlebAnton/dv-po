@@ -1427,6 +1427,10 @@ line-height: 22px;
     gap: 24px;
     max-width: 300px;
     width: 100%;
+    user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none; 
 }
 
 .steps__slide__top {
@@ -1504,7 +1508,12 @@ line-height: 22px;
     height: 1px;
     background-color: var(--light-blue-middle);
 }
-
+.swiper-slide {
+    user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none; 
+}
 .steps__slide_finish {
     max-width: 278px;
     width: 100%;
@@ -1515,6 +1524,7 @@ line-height: 22px;
     font-size: 16px;
     line-height: 140%;
     margin-left: -72px;
+     
 }
 
 .requirements__container {
@@ -2971,7 +2981,7 @@ line-height: 22px;
 
     .footer_row {
         grid-template-rows: auto;
-        gap: 8px;
+        gap: 12px;
     }
 
     .footer__contact_phone,
@@ -3007,6 +3017,15 @@ line-height: 22px;
         padding: 12px;
         border-radius: 16px;
         gap: 19px;
+    }
+    .footer .container-l {
+        padding: 0;
+       
+    }
+    .footer-wrapper {
+        margin-bottom: 0;
+        border-radius: 30px 30px 0 0;
+        background-size: 100% auto;
     }
 }
 
