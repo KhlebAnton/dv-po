@@ -3001,4 +3001,15 @@ section.we_help {
         font-size: 18px;
         line-height: 20px;
     }
+    .btn-black {
+        padding:0 0.8rem;
+    }
+  
+}
+
+@media (max-width:480px) {
+  .directors_word__author {
+    max-width: none;
+}
+
 }
