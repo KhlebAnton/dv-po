@@ -900,16 +900,15 @@ input[type="email"]:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
     color: var(--white);
     position: relative;
     overflow: hidden;
-    min-height: 8.6875rem;
 }
 
 .trust__item__title {
     font-size: 2.25rem;
-    line-height: 100%;
+       line-height: 160%;
+
 
     font-weight: 500;
     position: relative;
@@ -919,7 +918,8 @@ input[type="email"]:focus {
 .trust__item__subtitle {
     font-weight: 500;
     font-size: 1.5rem;
-    line-height: 100%;
+        line-height: 160%;
+
     position: relative;
 
 }
@@ -2422,6 +2422,54 @@ section.we_help {
     align-items: center;
     gap: 1rem;
 }
+.benefits_our_work__content {
+    background:url('../images/benefits/bg.png') 100% 100%/ cover no-repeat, var(--light-blue-main) ;
+    padding: 2.2125rem 1.5rem;
+    border-radius: 1.875rem;
+    color: var(--white);
+    display: flex;
+    align-items: start;
+    gap: 1.6875rem;
+}
+.benefits_our_work__content h2 {
+    max-width: 21rem;
+}
+.benefits_our_work__grid {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    gap: 0.75rem;
+}
+.benefits_our_work__item {
+    position: relative;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 1.25rem;
+    padding-right: 9.3625rem;
+    max-width: 46rem;
+    overflow: hidden;
+   
+    color: var(--black);
+}
+.benefits_our_work__item:nth-child(2) .benefits_our_work__item__desc {
+    max-width: none;
+}
+.benefits_our_work__item__desc {
+    max-width: 33.0625rem;
+     display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 3;
+}
+.benefits_our_work__item__img {
+    position: absolute;
+    width: 7.375rem;
+    height: 8.625rem;
+    object-fit: contain;
+    top: 1.1875rem;
+    right: 1.25rem;
+}
 @media (min-width:1920px) {
     html {
         font-size: 25.28px;
@@ -2684,6 +2732,12 @@ section.we_help {
         flex-direction: column;
     }
     .recommended_banner_big__stats {
+        max-width: none;
+    }
+    .benefits_our_work__content {
+        flex-direction: column;
+    }
+    .benefits_our_work__item {
         max-width: none;
     }
 }
@@ -3003,6 +3057,12 @@ section.we_help {
     }
     .btn-black {
         padding:0 0.8rem;
+    }
+    .benefits_our_work__item {
+        padding-right: 1.5rem;
+    }
+    .benefits_our_work__item__img {
+        opacity: .7;
     }
   
 }
