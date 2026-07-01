@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function openModal() {
             modal.classList.add('is-open');
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.remove('is-open');
-            document.body.style.overflow = ''; 
+            document.body.style.overflow = '';
         }
 
         modal.addEventListener('click', function (e) {
@@ -68,100 +68,108 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     // анимация числ
-    (function () {
-        const animatedCounts = document.querySelectorAll('.count-animated');
-        const animatedDops = document.querySelectorAll('.count-animated__dop');
-        const secAnimated = 4000;
+ (function () {
+    const animatedCounts = document.querySelectorAll('.count-animated');
+    const secAnimated = 3000;
 
-        function getEasedValue(progress) {
-            return progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+    function getEasedValue(progress) {
+        return progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+    }
+
+    function animateValue(element, end, duration) {
+        const startTime = performance.now();
+        element.textContent = '0';
+
+        function update(currentTime) {
+            const progress = Math.min(
+                1,
+                (currentTime - startTime) / duration
+            );
+
+            const current = progress === 1
+                ? end
+                : Math.floor(end * getEasedValue(progress));
+
+            element.textContent = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
         }
 
-        function animateValue(element, end, duration) {
-            const startTime = performance.now();
-            element.textContent = '0';
+        requestAnimationFrame(update);
+    }
 
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                let progress = Math.min(1, elapsed / duration);
+    function revealDop(element, duration = 600, delay = 0) {
+        const width = element.scrollWidth;
 
-                const eased = getEasedValue(progress);
-                let current = Math.floor(end * eased);
+        element.style.transition = `
+            width ${duration}ms ease ${delay}ms,
+            opacity ${duration}ms ease ${delay}ms
+        `;
 
-                if (progress === 1) {
-                    current = end;
-                    element.style.width = 'auto';
-                }
+        requestAnimationFrame(() => {
+            element.style.opacity = '1';
+            element.style.width = `${width}px`;
+        });
 
-                element.textContent = current;
+        setTimeout(() => {
+            element.style.width = 'auto';
+        }, duration + delay);
+    }
 
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
+    animatedCounts.forEach(count => {
+        const finalValue = parseInt(count.textContent, 10);
+        if (isNaN(finalValue)) return;
+
+        count.dataset.final = finalValue;
+        count.textContent = '0';
+        count.style.opacity = '0';
+    });
+
+    document.querySelectorAll('.count-animated__dop').forEach(dop => {
+        dop.style.opacity = '0';
+        dop.style.width = '0';
+        dop.style.overflow = 'hidden';
+        dop.style.whiteSpace = 'nowrap';
+        dop.style.display = 'inline-block';
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            const container = entry.target;
+            const count = container.querySelector('.count-animated');
+            const dops = container.querySelectorAll('.count-animated__dop');
+
+            if (count) {
+                animateValue(
+                    count,
+                    parseInt(count.dataset.final, 10),
+                    secAnimated
+                );
+
+                count.style.transition = 'opacity 3s ease';
+                count.style.opacity = '1';
+
+                setTimeout(() => {
+                    dops.forEach((dop, index) => {
+                        revealDop(dop, 600, index * 100);
+                    });
+                }, secAnimated);
             }
 
-            requestAnimationFrame(update);
-        }
-
-        function fadeIn(element, duration, delay = 0) {
-            element.style.opacity = '0';
-            element.style.transition = `opacity ${duration}ms ease-out ${delay}ms`;
-
-            element.offsetHeight;
-
-            element.style.opacity = '1';
-        }
-
-        animatedCounts.forEach(count => {
-            const finishCount = parseInt(count.textContent, 10);
-            if (isNaN(finishCount)) return;
-
-            count.setAttribute('data-final', finishCount);
-
-            const wCount = count.offsetWidth;
-            count.style.width = wCount + 'px';
-            count.textContent = '0';
-
-            count.style.opacity = '0';
+            observer.unobserve(container);
         });
+    }, {
+        threshold: 0.1
+    });
 
-        animatedDops.forEach(dop => {
-            dop.style.opacity = '0';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const container = entry.target.closest('.stats-item');
-                    if (!container) return;
-
-                    const countElement = container.querySelector('.count-animated');
-                    const dopElements = container.querySelectorAll('.count-animated__dop');
-
-                    if (countElement) {
-                        const finalValue = parseInt(countElement.getAttribute('data-final'), 10);
-                        if (!isNaN(finalValue) && finalValue > 0) {
-                            animateValue(countElement, finalValue, secAnimated);
-                            fadeIn(countElement, 3000, 0);
-                        }
-                    }
-
-                    dopElements.forEach((dop, index) => {
-                        fadeIn(dop, 3000, index * 100);
-                    });
-
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        const statsItems = document.querySelectorAll('.stats-item');
-        statsItems.forEach(item => {
-            observer.observe(item);
-        });
-    })();
+    document.querySelectorAll('.stats-item').forEach(item => {
+        observer.observe(item);
+    });
+})();
 
     // анимация заголовков
     (function () {
@@ -338,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-// свайпер  Нас рекомендуют
+    // свайпер  Нас рекомендуют
     const recommendedSwiperContainer = document.querySelector('.recommended_swiper');
 
     const recommendedSwiper = new Swiper(recommendedSwiperContainer, {

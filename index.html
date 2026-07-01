@@ -576,7 +576,7 @@
                         Проведем консультацию, проверим стоп-факторы до договора, подготовим документы и доведем
                         до решения. Платите только за результат.
                     </p>
-                    <button type="button" class="btn btn-primary" data-btn-modal="call">Получить консультацию</button>
+                    <button type="button" class="btn btn-primary" data-btn-modal="quize">Получить консультацию</button>
                 </div>
             </div>
         </section>
@@ -1026,12 +1026,12 @@
                 </div>
             </div>
         </section>
-<section class="subscription">
+        <section class="subscription">
             <div class="container-l">
                 <div class="subscription-content">
                     <div class="subscription-info">
                         <h2 class="fade-in-animated">
-                           Включите свою продукцию в реестр с оплатой только за результат
+                            Включите свою продукцию в реестр с оплатой только за результат
                         </h2>
                         <p>
                             Проведем первичную оценку и подскажем дальнейшие шаги для вступления в реестр.
@@ -1226,7 +1226,7 @@
                 </div>
             </div>
         </section>
-      
+
     </main>
     <footer class="footer">
         <div class="container-l">
@@ -1565,6 +1565,198 @@
         </div>
     </div>
 
+    <div class="modal-overlay" data-modal="quize">
+        <div class="modal-content quiz-modal">
+
+            <div class="modal-close"></div>
+
+            <form class="quiz-form" id="quizForm">
+
+                <!-- STEP 1 -->
+                <div class="quiz-step active" data-step="1">
+                    <h3>Где производится ваша продукция?</h3>
+
+                    <div class="quiz-option__container">
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="2" required>
+                            <span>Полностью на своей площадке в России</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="1">
+                            <span>Частично своя площадка, частично контрактное производство в России</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="0">
+                            <span>Контрактное производство в России (не своя площадка)</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q1" value="0" data-risk="true">
+                            <span>Производство за пределами РФ / СНГ</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="quiz-step" data-step="2">
+                    <h3>Какая доля стоимости иностранных деталей и комплектующих в конечной стоимости продукции?</h3>
+                    <div class="quiz-option__container">
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="2" required>
+                            <span>Менее 10%</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="1">
+                            <span>От 10 до 50%</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="0">
+                            <span>Более 50%</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q2" value="1">
+                            <span>Не считали / не знаем</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="quiz-step" data-step="3">
+                    <h3>Есть ли у вас сейчас в наличии конструкторская и техническая документация на продукцию?</h3>
+                    <div class="quiz-option__container">
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="2" required>
+                            <span>Да, всё есть и актуально</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="1">
+                            <span>Часть есть, часть нужно собирать/восстанавливать</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="0">
+                            <span>Нет, нужно разрабатывать с нуля</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q3" value="1">
+                            <span>Не знаю</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="quiz-step" data-step="4">
+                    <h3>Используется ли в вашей продукции программное обеспечение?</h3>
+                    <div class="quiz-option__container">
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="1" required>
+                            <span>Да, используется</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q4" value="0">
+                            <span>Нет, наша продукция не предполагает наличие программного обеспечения</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="quiz-step" data-step="5">
+                    <h3>Что для вас сейчас важно?</h3>
+                    <div class="quiz-option__container">
+                        <label class="quiz-option">
+                            <input type="radio" name="q5" required>
+                            <span>Участвовать в тендерах по 44-ФЗ/223-ФЗ</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q5">
+                            <span>Наши клиенты требуют подтверждение через реестр</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q5">
+                            <span>Хотим использовать знак «Российская промышленная продукция»</span>
+                        </label>
+
+                        <label class="quiz-option">
+                            <input type="radio" name="q5">
+                            <span>Пока изучаем возможность</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- RESULT -->
+                <div class="quiz-result" style="display:none;">
+                    <h3 class="result-title"></h3>
+                    <p class="result-text"></p>
+
+                    <button type="button" class="btn btn-primary show-contact-form btn-small">
+                        Указать контакты
+                    </button>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <div class="quiz-contact" style="display:none;">
+                    <input type="hidden" name="quiz_result">
+                    <div class="modal-form__title">
+                    <h2>
+                        Получите консультацию
+                    </h2>
+                    <p>
+                        Оставьте ваши данные и наши менеджеры свяжуться с вами в ближайшее время
+                    </p>
+                </div>
+                    <div class="form_inputs_grid">
+                        <input type="text" class="name" required placeholder="Введите ваше имя">
+
+                        <input type="text" class="phone-input" name="tel" required>
+
+                        <input type="email" name="email" required placeholder="Введите вашу почту">
+                    </div>
+
+                    <label class="check-label">
+                        <input type="checkbox" required>
+
+                        <div class="marker-checkbox"></div>
+
+                        <p class="txt-4">
+                            Я даю согласие на обработку персональных данных в соответствии с
+                            <a href="#">политикой конфиденциальности</a>
+                        </p>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary ">
+                        Получить консультацию
+                    </button>
+                </div>
+
+                <div class="quiz-nav">
+                    <button type="button" class="quiz-prev btn btn-small-x btn-black" disabled>
+                        Назад
+                    </button>
+
+                    <button type="button" class="quiz-next btn btn-small-x btn-primary">
+                        Далее
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" id="jquery-js-js"></script>
@@ -1572,6 +1764,8 @@
     <script src="./scripts/intlTelInput.min.js"></script>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/quize.js"></script>
+
 </body>
 
 </html>

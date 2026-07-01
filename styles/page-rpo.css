@@ -480,6 +480,10 @@ input[type="email"]:focus {
     font-size: 3rem;
     line-height: 3.375rem;
     color: var(--light-blue-main);
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    min-width: 17.25rem;
 }
 
 
@@ -2474,6 +2478,104 @@ section.we_help {
     top: 1.1875rem;
     right: 1.25rem;
 }
+.count-animated__dop {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* квиз */
+.quiz-step {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quiz-step.active {
+    display: flex;
+}
+
+.quiz-option {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    align-items: center;
+    
+}
+
+.quiz-option span {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--white);
+    color: var(--black);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: all .3s ease;
+    min-height: 3rem;
+}
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: .5rem;
+}
+.quiz-result h3,
+.quiz-step h3 {
+    line-height: 100%;
+    max-width: 24rem;
+    margin: 0 auto;
+    text-align: center;
+}
+.quiz-prev,
+.quiz-next {
+    min-width: 140px;
+}
+.result-text {
+    color: var(--black);
+    padding: 0.5rem;
+    border-radius: 0.6rem 0.4rem;
+    background-color: var(--white);
+}
+.quiz-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+}
+.quiz-next:disabled {
+    opacity: .4;
+    pointer-events: none;
+    cursor: default;
+}
+.quiz-prev:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+.quiz-option__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+.quiz-option input[type='radio'] {
+    position: absolute;
+    z-index: -99;
+    opacity: 0;
+}
+
+.quiz-option input[type='radio']:checked + span{
+    background-color: var(--IT);
+    color: var(--white);
+}
+.quiz-contact {
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
 @media (min-width:1920px) {
     html {
         font-size: 25.28px;
@@ -2605,7 +2707,10 @@ section.we_help {
         gap: 0.5625rem;
         grid-template-columns: 1fr 1fr;
     }
-
+  .stats-item__title {
+    
+        justify-content: center;
+    }
     .three-reasons__item {
         min-height: 24.9375rem;
     }
@@ -3068,7 +3173,13 @@ section.we_help {
     .benefits_our_work__item__img {
         opacity: .7;
     }
-  
+    .quiz-option__container {
+        grid-template-columns: 1fr;
+    }
+    .quiz-nav {
+        flex-direction: column-reverse;
+
+    }
 }
 
 @media (max-width:480px) {
